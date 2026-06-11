@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Driving Robot | Alex Santora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+  <nav class="navbar container" aria-label="Primary navigation">
+    <a class="brand" href="index.html#home-section">Alex Santora</a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html#home-section">Home</a></li>
+      <li><a href="index.html#about-section">About</a></li>
+      <li><a href="index.html#resume-section">Resume</a></li>
+      <li><a href="index.html#project-section">Projects</a></li>
+      <li><a href="index.html#contact-section">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <main class="page-main">
+    <section class="project-detail section">
+      <div class="container detail-layout reveal">
+        <a class="back-link" href="index.html#project-section">Back to Projects</a>
+        <p class="eyebrow">Academic Project</p>
+        <h1>Autonomous Navigation Robot</h1>
+        <p class="lead">An autonomous robot built to interpret sensor and camera feedback, navigate a course, avoid obstacles, and communicate system state during testing.</p>
+
+        <div class="project-hero-media" style="background-image: url('images/robot.jpg');" aria-label="Self-driving robot project photo"></div>
+
+        <div class="detail-grid">
+          <article>
+            <h2>Overview</h2>
+            <p>This project focused on bringing together embedded programming, physical hardware, and real-time decision making in a working mobile robot.</p>
+          </article>
+          <article>
+            <h2>Problem or Goal</h2>
+            <p>The goal was to move through an arena reliably while responding to obstacles, course boundaries, and changing sensor inputs.</p>
+          </article>
+          <article>
+            <h2>My Role</h2>
+            <p>I contributed to control logic, sensor integration, debugging, testing, and documenting how the robot behaved during each design iteration.</p>
+          </article>
+          <article>
+            <h2>Tools and Technologies</h2>
+            <p>Arduino/C++, embedded sensors, camera feedback, MQTT communication, circuit debugging, and team-based testing.</p>
+          </article>
+        </div>
+
+        <section class="media-section" aria-labelledby="robot-video-title">
+          <div class="media-copy">
+            <p class="eyebrow">Demo Video</p>
+            <h2 id="robot-video-title">Robot Runthrough</h2>
+            <p>This video shows the robot moving through the course, reacting to its environment, and demonstrating the final autonomous behavior.</p>
+          </div>
+          <div class="video-shell">
+            <video controls preload="metadata" aria-label="Self-driving robot demo video">
+              <source src="media/IMG_3379.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </section>
+
+        <section class="media-section" aria-labelledby="robot-report-title">
+          <div class="media-copy">
+            <p class="eyebrow">Technical Report</p>
+            <h2 id="robot-report-title">Design Notes and Results</h2>
+            
+          </div>
+          <div class="report-shell" aria-label="Scrollable technical report" tabindex="0">
+            <iframe class="report-frame" src="media/26S_C1_G8_robot_final_report.pdf" title="Autonomous Navigation Robot technical report"></iframe>
+          </div>
+        </section>
+
+        <div class="detail-grid project-takeaways">
+          <article>
+            <h2>Key Features</h2>
+            <ul>
+              <li>Autonomous path decisions from live sensor input</li>
+              <li>Camera-assisted course feedback</li>
+              <li>MQTT communication for status updates</li>
+            </ul>
+          </article>
+          <article>
+            <h2>What I Learned</h2>
+            <p>The project strengthened my understanding of hardware/software integration, iterative testing, and how small calibration changes affect real-world robot behavior.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Alex Santora.</p>
+      <div class="footer-links"><a href="https://www.linkedin.com/in/alex-santora" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/Alex-Santora" target="_blank" rel="noopener">GitHub</a><a href="mailto:asantora1@stevens.edu">asantora1@stevens.edu</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

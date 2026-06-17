@@ -1,212 +1,146 @@
+/* ============================================================
+   Alex Santora — portfolio interactions
+   One disciplined scroll-reveal system, scroll-spy nav,
+   condensing header, mobile menu, progress bar, photo loader.
+   ============================================================ */
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- mobile navigation ---------- */
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
-const siteHeader = document.querySelector(".site-header");
-const motionAllowed = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const scrollProgress = document.createElement("div");
-scrollProgress.className = "scroll-progress";
-scrollProgress.setAttribute("aria-hidden", "true");
-document.body.prepend(scrollProgress);
-
-const heroParticles = document.querySelector(".hero-particles");
-
-if (heroParticles && motionAllowed) {
-  const particleCount = 34;
-
-  for (let index = 0; index < particleCount; index += 1) {
-    const particle = document.createElement("span");
-    const size = 2 + Math.random() * 4;
-    const drift = -80 + Math.random() * 160;
-    const duration = 9 + Math.random() * 11;
-    const delay = -Math.random() * duration;
-    const opacity = 0.16 + Math.random() * 0.34;
-
-    particle.style.setProperty("--particle-left", `${Math.random() * 100}%`);
-    particle.style.setProperty("--particle-size", `${size.toFixed(1)}px`);
-    particle.style.setProperty("--particle-drift", `${drift.toFixed(1)}px`);
-    particle.style.setProperty("--particle-duration", `${duration.toFixed(1)}s`);
-    particle.style.setProperty("--particle-delay", `${delay.toFixed(1)}s`);
-    particle.style.setProperty("--particle-opacity", opacity.toFixed(2));
-
-    heroParticles.appendChild(particle);
-  }
+function closeMenu(returnFocus) {
+  if (!navLinks || !navToggle) return;
+  navLinks.classList.remove("open");
+  navToggle.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+  if (returnFocus) navToggle.focus();
 }
 
-// Toggle the mobile navigation menu and keep the ARIA state accurate.
 if (navToggle && navLinks) {
   navToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    navToggle.classList.toggle("open", isOpen);
-    navToggle.setAttribute("aria-expanded", String(isOpen));
+    const open = navLinks.classList.toggle("open");
+    navToggle.classList.toggle("open", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+
+  // Close after tapping a link.
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => closeMenu(false));
+  });
+
+  // Escape closes the menu and returns focus to the toggle.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navLinks.classList.contains("open")) closeMenu(true);
+  });
+
+  // Clicking outside the open menu closes it.
+  document.addEventListener("click", (e) => {
+    if (
+      navLinks.classList.contains("open") &&
+      !navLinks.contains(e.target) &&
+      !navToggle.contains(e.target)
+    ) {
+      closeMenu(false);
+    }
   });
 }
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const target = document.querySelector(link.getAttribute("href"));
+/* ---------- scroll progress bar ---------- */
+const progress = document.createElement("div");
+progress.className = "scroll-progress";
+progress.setAttribute("aria-hidden", "true");
+document.body.prepend(progress);
 
-    if (!target) {
-      return;
-    }
-
-    event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-
-    if (navToggle && navLinks) {
-      navLinks.classList.remove("open");
-      navToggle.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-});
-
+/* ---------- scroll reveal (single system) ---------- */
 const revealItems = document.querySelectorAll(".reveal");
 
-revealItems.forEach((item, index) => {
-  item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 55}ms`);
-});
-
-// Subtle scroll reveal for a more polished student portfolio feel.
-if ("IntersectionObserver" in window) {
+if ("IntersectionObserver" in window && !reduceMotion) {
   const revealObserver = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
   );
-
   revealItems.forEach((item) => revealObserver.observe(item));
 } else {
-  revealItems.forEach((item) => item.classList.add("visible"));
+  revealItems.forEach((item) => item.classList.add("in"));
 }
 
-const sectionLinks = Array.from(document.querySelectorAll(".nav-links a"))
-  .map((link) => {
-    const id = link.hash ? link.hash.slice(1) : "";
-    const section = id ? document.getElementById(id) : null;
-    return { link, section };
-  })
-  .filter((item) => item.section);
+/* ---------- header condense + scroll spy + progress ---------- */
+const header = document.querySelector(".site-header");
+
+// Two independent spy groups: the top nav tracks the five top-level sections,
+// the resume side-nav tracks its three sub-blocks. Kept separate so neither
+// overwrites the other's active state.
+function buildSpyGroup(selector) {
+  return Array.from(document.querySelectorAll(selector))
+    .map((link) => {
+      const id = link.hash ? link.hash.slice(1) : "";
+      const section = id ? document.getElementById(id) : null;
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean);
+}
+
+const mainNav = buildSpyGroup(".nav-links a");
+const resumeNav = buildSpyGroup(".resume-nav a");
+
+function spy(group, marker) {
+  if (!group.length) return;
+  let current = group[0];
+  for (const item of group) {
+    if (item.section.offsetTop <= marker) current = item;
+  }
+  group.forEach(({ link }) => {
+    const active = link === current.link;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "true");
+    else link.removeAttribute("aria-current");
+  });
+}
 
 let ticking = false;
 
-function updateScrollEffects() {
-  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+function onScroll() {
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - window.innerHeight;
+  const ratio = max > 0 ? window.scrollY / max : 0;
+  doc.style.setProperty("--progress", ratio.toFixed(4));
 
-  document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
-  siteHeader?.classList.toggle("scrolled", window.scrollY > 18);
+  header?.classList.toggle("scrolled", window.scrollY > 8);
 
-  if (motionAllowed) {
-    document.documentElement.style.setProperty("--hero-drift", `${window.scrollY * 0.05}px`);
-    document.documentElement.style.setProperty("--hero-copy-drift", `${window.scrollY * -0.025}px`);
-  }
-
-  if (sectionLinks.length) {
-    const activeSection = sectionLinks
-      .map((item) => ({ ...item, distance: Math.abs(item.section.getBoundingClientRect().top - 120) }))
-      .sort((a, b) => a.distance - b.distance)[0];
-
-    sectionLinks.forEach(({ link }) => {
-      const isActive = link === activeSection.link;
-      link.classList.toggle("active", isActive);
-      if (isActive) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
+  const marker = window.scrollY + window.innerHeight * 0.32;
+  spy(mainNav, marker);
+  spy(resumeNav, marker);
 
   ticking = false;
 }
 
-function requestScrollUpdate() {
+function requestTick() {
   if (!ticking) {
-    window.requestAnimationFrame(updateScrollEffects);
+    window.requestAnimationFrame(onScroll);
     ticking = true;
   }
 }
 
-window.addEventListener("scroll", requestScrollUpdate, { passive: true });
-window.addEventListener("resize", requestScrollUpdate);
-updateScrollEffects();
+window.addEventListener("scroll", requestTick, { passive: true });
+window.addEventListener("resize", requestTick);
+onScroll();
 
-if (motionAllowed) {
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-      card.style.setProperty("--tilt-x", `${(-y * 5).toFixed(2)}deg`);
-      card.style.setProperty("--tilt-y", `${(x * 5).toFixed(2)}deg`);
-    });
-
-    card.addEventListener("pointerleave", () => {
-      card.style.setProperty("--tilt-x", "0deg");
-      card.style.setProperty("--tilt-y", "0deg");
-    });
-  });
-}
-
-// Load images/profile.jpg if it exists; otherwise the placeholder box remains visible.
-document.querySelectorAll("[data-profile-photo]").forEach((photo) => {
-  const imagePath = photo.getAttribute("data-profile-photo");
-  const testImage = new Image();
-
-  testImage.onload = () => {
-    photo.style.backgroundImage = `url("${imagePath}")`;
-    photo.classList.add("has-photo");
+/* ---------- profile photo loader ---------- */
+document.querySelectorAll("[data-profile-photo]").forEach((el) => {
+  const src = el.getAttribute("data-profile-photo");
+  const probe = new Image();
+  probe.onload = () => {
+    el.style.backgroundImage = `url("${src}")`;
+    el.classList.add("has-photo");
   };
-
-  testImage.src = imagePath;
+  probe.src = src;
 });
-
-const contactForm = document.querySelector("#contactForm");
-const formStatus = document.querySelector("#formStatus");
-
-function setError(input, message) {
-  const group = input.closest(".form-group");
-  const error = group.querySelector(".error-message");
-  error.textContent = message;
-  input.setAttribute("aria-invalid", message ? "true" : "false");
-}
-
-function isValidEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-if (contactForm) {
-  // This is front-end-only validation; no message is submitted to a server.
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    let isValid = true;
-    const fields = contactForm.querySelectorAll("input, textarea");
-
-    fields.forEach((field) => {
-      const value = field.value.trim();
-      setError(field, "");
-
-      if (!value) {
-        isValid = false;
-        setError(field, "This field is required.");
-      } else if (field.type === "email" && !isValidEmail(value)) {
-        isValid = false;
-        setError(field, "Please enter a valid email address.");
-      }
-    });
-
-    if (isValid) {
-      contactForm.reset();
-      formStatus.textContent = "Thanks! Your message has been received.";
-    } else {
-      formStatus.textContent = "";
-    }
-  });
-}

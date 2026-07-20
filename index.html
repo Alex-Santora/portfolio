@@ -3,320 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Santora — Computer Engineering & Applied Math</title>
-  <meta name="description" content="Alex Santora — Computer Engineering (AI) and Applied Mathematics (Data Science) student-athlete at Stevens. I build systems that learn, classify, and decide.">
+  <title>Alex Santora | Student Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <nav class="navbar container" aria-label="Primary">
-      <a class="brand" href="#home">Alex Santora<span class="brand-mark">.</span></a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <nav class="navbar container" aria-label="Primary navigation">
+      <a class="brand" href="#home-section">Alex Santora</a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a class="active" href="#home-section">Home</a></li>
+        <li><a href="#about-section">About</a></li>
+        <li><a href="#resume-section">Resume</a></li>
+        <li><a href="#project-section">Projects</a></li>
+        <li><a href="#contact-section">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- ================= HERO ================= -->
-    <section class="hero" id="home">
+    <section class="hero student-hero" id="home-section">
+      <div class="hero-particles" aria-hidden="true"></div>
       <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="hero-status reveal"><span class="dot" aria-hidden="true"></span>Research Intern @ UNH — privacy-aware ML</span>
-          <p class="eyebrow reveal" style="--d:60ms">Computer Engineering · Applied Mathematics</p>
-          <h1 class="reveal" style="--d:120ms">Alex Santora<span class="accent">.</span></h1>
-          <p class="hero-text reveal" style="--d:180ms">
-            Computer Engineering and Mathematics student-athlete at Stevens, interested in applying classroom knowledge to real technical projects, internships, research, and practical problem solving.
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Hey! I am</p>
+          <h1>Alex Santora</h1>
+      
+          <p class="hero-text">
+            Computer Engineering and Mathematics student-athlete at Stevens, interested in applying classroom knowledge
+            to real technical projects, internships, research, and practical problem solving.
           </p>
-          <div class="hero-actions reveal" style="--d:240ms">
-            <a class="btn primary" href="#projects">View projects <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn ghost" href="media/6-17-2026.pdf" target="_blank" rel="noopener">Resume</a>
+          <div class="hero-actions">
+            <a class="btn primary" href="#project-section">View Projects</a>
+            
+            <a class="btn ghost" href="#contact-section">Contact Me</a>
           </div>
-          <dl class="telemetry reveal" style="--d:300ms">
-            <div><dt>3.9<span class="unit">/4.0</span></dt><dd>GPA</dd></div>
-            <div><dt>NCAA</dt><dd>Varsity<br>baseball</dd></div>
-          </dl>
-        </div>
-
-        <!-- signature: classification plot -->
-        <div class="hero-plot reveal" style="--d:200ms" aria-hidden="true">
-          <span class="plot-label tl">class · A / B</span>
-          <span class="plot-label br">decision boundary</span>
-          <svg class="plot-svg" viewBox="0 0 120 120" focusable="false">
-            <!-- grid -->
-            <line class="plot-grid" x1="14" y1="32" x2="114" y2="32"/>
-            <line class="plot-grid" x1="14" y1="56" x2="114" y2="56"/>
-            <line class="plot-grid" x1="14" y1="80" x2="114" y2="80"/>
-            <line class="plot-grid" x1="39" y1="8" x2="39" y2="106"/>
-            <line class="plot-grid" x1="64" y1="8" x2="64" y2="106"/>
-            <line class="plot-grid" x1="89" y1="8" x2="89" y2="106"/>
-            <!-- axes -->
-            <line class="plot-axis" x1="14" y1="8" x2="14" y2="106"/>
-            <line class="plot-axis" x1="14" y1="106" x2="114" y2="106"/>
-            <!-- decision boundary -->
-            <path class="plot-boundary" d="M 26 18 C 52 44, 60 76, 110 102"/>
-            <!-- class A (accent) -->
-            <circle class="plot-pt a" cx="34" cy="92" r="4" style="animation-delay:.40s"/>
-            <circle class="plot-pt a" cx="48" cy="100" r="4" style="animation-delay:.45s"/>
-            <circle class="plot-pt a" cx="62" cy="96" r="4" style="animation-delay:.50s"/>
-            <circle class="plot-pt a" cx="28" cy="74" r="4" style="animation-delay:.55s"/>
-            <circle class="plot-pt a" cx="44" cy="82" r="4" style="animation-delay:.60s"/>
-            <circle class="plot-pt a" cx="58" cy="90" r="4" style="animation-delay:.65s"/>
-            <circle class="plot-pt a" cx="40" cy="64" r="4" style="animation-delay:.70s"/>
-            <circle class="plot-pt a" cx="74" cy="102" r="4" style="animation-delay:.75s"/>
-            <!-- class B (hollow) -->
-            <circle class="plot-pt b" cx="78" cy="40" r="3.6" style="animation-delay:.50s"/>
-            <circle class="plot-pt b" cx="92" cy="30" r="3.6" style="animation-delay:.55s"/>
-            <circle class="plot-pt b" cx="104" cy="48" r="3.6" style="animation-delay:.60s"/>
-            <circle class="plot-pt b" cx="70" cy="28" r="3.6" style="animation-delay:.65s"/>
-            <circle class="plot-pt b" cx="88" cy="56" r="3.6" style="animation-delay:.70s"/>
-            <circle class="plot-pt b" cx="100" cy="68" r="3.6" style="animation-delay:.75s"/>
-            <circle class="plot-pt b" cx="66" cy="18" r="3.6" style="animation-delay:.80s"/>
-          </svg>
         </div>
       </div>
-      <a class="scroll-cue" href="#about" aria-label="Scroll to about"></a>
+      <a class="scroll-cue" href="#about-section" aria-label="Scroll to about section"><span></span><span></span><span></span></a>
     </section>
 
-    <!-- ================= ABOUT ================= -->
-    <section class="section" id="about">
-      <div class="container about-grid">
+    <section class="section about-section" id="about-section">
+      <div class="container about-layout">
         <div class="profile-photo reveal" data-profile-photo="images/me.jpeg">
-          <div class="fallback">portrait</div>
+          <span>Add Profile Photo</span>
         </div>
-        <div class="about-copy reveal" style="--d:80ms">
-          <p class="eyebrow">About</p>
-          <h2>Engineer by training,<br>competitor by habit.</h2>
-          <p class="opening">
-          I am a 2/4 Computer Engineering and Math student at Stevens Institute of Technology interested in software, hardware, machine learning, and real-world problem solving. I enjoy building hands-on projects that combine technical depth with practical use. 
-          </p>
-          <p>
-          Outside of academics, I’m a member of the Stevens baseball team, which has helped shape my work ethic, discipline, and teamwork.          
-          </p> 
-          <ul class="spec-list">
-            <li><span class="k">School</span><span class="v">Stevens Institute of Technology</span></li>
-            <li><span class="k">Computer Eng.</span><span class="v">Artificial Intelligence concentration</span></li>
-            <li><span class="k">Applied Math</span><span class="v">Data Science concentration</span></li>
-            <li><span class="k">Profile</span><span class="v">Student-athlete · Varsity baseball</span></li>
-            <li><span class="k">GPA</span><span class="v">3.9 / 4.0</span></li>
+        <article class="about-copy reveal">
+          <p class="eyebrow">About Me</p>
+          <h2>Here's a little about me</h2>
+          <p>I am a 2/4 Computer Engineering and Math student at Stevens Institute of Technology interested in software, hardware, machine learning, and real-world problem solving. I enjoy building hands-on projects that combine technical depth with practical use.</p>
+          <p>Outside of academics, I’m a member of the Stevens baseball team, which has helped shape my work ethic, discipline, and teamwork.</p>
+          <ul class="about-info">
+            <li><span>Name:</span><strong>Alex Santora</strong></li>
+            <li><span>School:</span><strong>Stevens Institute of Technology</strong></li>
+            <li><span>Major I:</span><strong>Computer Engineering - Artificial Intelligence</strong></li>
+            <li><span>Major II:</span><strong>Applied Mathematics - Data Science</strong></li>
+            <li><span>Student Profile:</span><strong>Student-Athlete</strong></li>
+            <li><span>GPA:</span><strong>3.9/4</strong></li>
           </ul>
-          <a class="btn primary" href="#contact">Get in touch <span class="arrow" aria-hidden="true">→</span></a>
-        </div>
+          <a class="btn primary" href="#contact-section">Contact Me</a>
+        </article>
       </div>
     </section>
 
-    <!-- ================= RESUME ================= -->
-    <section class="section section-sunk" id="resume">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Resume</p>
-          <h2>Education &amp; experience</h2>
-        </div>
+    <section class="section resume-section" id="resume-section">
+      <div class="container resume-shell">
+        <aside class="resume-nav reveal" aria-label="Resume sections">
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+        </aside>
 
-        <div class="resume-shell">
-          <nav class="resume-nav reveal" aria-label="Resume sections">
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-          </nav>
-
-          <div class="resume-content">
-            <div class="resume-block reveal" id="education">
-              <h3 class="block-title">Education</h3>
-              <div class="timeline">
-                <article class="entry">
-                  <div class="when">In progress</div>
-                  <div>
-                    <h4>Stevens Institute of Technology</h4>
-                    <p class="org">B.E. Computer Engineering (AI) · B.S. Applied Mathematics (Data Science) — GPA 3.9/4.0</p>
-                    <p>Dual focus on engineering systems and the mathematics that drive modern machine learning.</p>
-                    <p class="coursework">Data Structures &amp; Algorithms · Circuits &amp; Systems · Differential Equations · Linear Algebra · Discrete Mathematics</p>
-                  </div>
-                </article>
-                <article class="entry">
-                  <div class="when">Graduated</div>
-                  <div>
-                    <h4>Winnacunnet High School</h4>
-                    <p class="org">Hampton, New Hampshire</p>
-                  </div>
-                </article>
+        <div class="resume-content">
+          <div class="resume-page reveal" id="education">
+            <h2 class="heading">Education</h2>
+            <article class="resume-wrap">
+              <div class="resume-icon">01</div>
+              <div>
+                <h3>Stevens Institute of Technology</h3>
+                <p class="position">Bachelors Of Engineering & Science</p>
+                <p><strong>Computer Engineering</strong> with Artificial Intelligence concentration</p>
+                <p><strong>Applied Mathematics</strong> with Data Science concentration</p>
+                <p class="date">GPA: 3.9/4</p>
+                <div class="resume-subsection">
+                  <h4>Relevant Coursework</h4>
+                  <p>Data Structures and Algorithms &bull; Circuits and Systems &bull; Differential Equations &bull; Linear Algebra &bull; Discrete Mathematics</p>
+                </div>
               </div>
-            </div>
-
-            <div class="resume-block reveal" id="experience">
-              <h3 class="block-title">Experience</h3>
-              <div class="timeline">
-                <article class="entry">
-                  <div class="when">May 2026 — Present</div>
-                  <div>
-                    <h4>Research Intern</h4>
-                    <p class="org">University of New Hampshire</p>
-                    <p>Researching machine-learning methods for detecting pain from audio and physiological signals, with a focus on both model performance and privacy. Reviewing current work, engineering features, designing an end-to-end experimental system, and building a custom pain-recognition model toward a publishable paper on privacy-aware detection.</p>
-                  </div>
-                </article>
-                <article class="entry">
-                  <div class="when">2025 — Present</div>
-                  <div>
-                    <h4>Student-Athlete · Varsity Baseball</h4>
-                    <p class="org">NCAA · Full-time</p>
-                    <p>Balancing academics, training, and competition while building accountability, resilience, and communication under pressure.</p>
-                  </div>
-                </article>
-                <article class="entry">
-                  <div class="when">Aug 2023 — Present</div>
-                  <div>
-                    <h4>Arcade Attendant</h4>
-                    <p class="org">Playland Arcade · Hampton, NH · Seasonal</p>
-                    <ul>
-                      <li>Keep a customer-friendly floor running smoothly, serving up to 250 guests per hour.</li>
-                      <li>Handle up to $5,000 in cash daily with accuracy and security.</li>
-                      <li>Maintain 100+ arcade games and ticket dispensers to minimize downtime.</li>
-                    </ul>
-                  </div>
-                </article>
-                <article class="entry">
-                  <div class="when">2023 — 2025</div>
-                  <div>
-                    <h4>Caddy</h4>
-                    <p class="org">Abenaqui Country Club</p>
-                    <p>Delivered a high-trust, member-facing service experience in a private club environment.</p>
-                  </div>
-                </article>
+            </article>
+            <article class="resume-wrap">
+              <div class="resume-icon">02</div>
+              <div>
+                <h3>Winnacunnet High School</h3>
+                <p class="position">High School</p>
+                <p></p>
               </div>
-            </div>
+            </article>
+          </div>
 
-            <div class="resume-block reveal" id="skills">
-              <h3 class="block-title">Skills</h3>
-              <div class="skill-tags">
-                <span>Python</span><span>C / C++</span><span>PyTorch</span><span>Machine Learning</span>
-                <span>Data Science</span><span>Embedded Systems</span><span>Arduino</span><span>Circuit Design</span>
-                <span>Signal Processing</span><span>Algorithms</span><span>Linear Algebra</span><span>Git</span>
+          <div class="resume-page reveal" id="experience">
+            <h2 class="heading">Experience</h2>
+            <article class="resume-wrap">
+              <div class="resume-icon">01</div>
+              <div>
+                <h3>Research Intern</h3>
+                <p class="position">University of New Hampshire</p>
+                <p>Investigating machine learning methods for detecting pain through measurable audio and physiological signals, with an emphasis on both model performance and privacy protection. Work includes reviewing current research, identifying useful features, designing an end-to-end experimental system, and developing a custom ML model for pain recognition. The project is intended to produce a functional research prototype and contribute toward a publishable academic paper on privacy-aware pain detection.</p>
+                <p class="date">May 2026 - Present</p>
               </div>
+            </article>
+            <article class="resume-wrap">
+              <div class="resume-icon">02</div>
+              <div>
+                <h3>Student Athlete - Varsity Baseball</h3>
+                <p class="position">NCAA &bull; Full-time</p>
+                <p>Balancing academics, training, competition, and team expectations while building accountability, resilience, and communication.</p>
+                <p class="date">2025 - Present</p>
+              </div>
+            </article>
+            <article class="resume-wrap">
+              <div class="resume-icon">03</div>
+              <div>
+                <h3>Arcade Attendant</h3>
+                <p class="position">Playland Arcade &bull; Seasonal</p>
+                <p class="date">Aug 2023 - Present</p>
+                <p>Hampton, New Hampshire, United States &bull; On-site</p>
+                <ul>
+                  <li>Collaborate with a team to maintain a customer-friendly atmosphere, handling misunderstandings with sensitivity and professionalism to ensure guests leave happy, serving up to 250 guests per hour.</li>
+                  <li>Manage and handle up to $5,000 in cash daily, ensuring accuracy and security in all transactions.</li>
+                  <li>Deliver technical assistance for over 100 arcade games and ticket dispensers, ensuring smooth operation and minimal downtime.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="resume-wrap">
+              <div class="resume-icon">04</div>
+              <div>
+                <h3>Caddy</h3>
+                <p class="position">Abenaqui Country Club</p>
+                <p>Provided a high-trust, member-facing service experience in a private club environment.</p>
+                <p class="date">2023 - 2025</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="resume-page reveal" id="skills">
+            <h2 class="heading">Skills</h2>
+            <div class="skill-badges">
+              <span>Programming</span><span>Engineering</span><span>Mathematics</span><span>AI</span><span>Data Science</span><span>Embedded Systems</span><span>Hardware</span><span>Software</span><span>Teamwork</span><span>Time Management</span><span>Communication</span><span>Problem Solving</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= PROJECTS ================= -->
-    <section class="section" id="projects">
+    <section class="section projects-section" id="project-section">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
           <p class="eyebrow">Projects</p>
-          <h2>Selected work</h2>
+          <h2>Featured Projects</h2>
         </div>
         <div class="project-grid">
-          <a class="project-card reveal" href="project-one.html">
-            <p class="stack">Arduino/C++ · Hardware · MQTT</p>
-            <h3>Autonomous Navigation Robot</h3>
-            <p>An embedded robot that fuses sensor data and camera feedback to navigate an arena and avoid obstacles in real time.</p>
-            <span class="view">Case study <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="project-card reveal" style="--d:60ms" href="project-two.html">
-            <p class="stack">Machine Learning · Raspberry Pi · Audio</p>
-            <h3>UNH Speech Privacy Research</h3>
-            <p>An audio-anonymization pipeline that protects private speaker information while preserving useful signal.</p>
-            <span class="view">Publication soon <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="project-card reveal" style="--d:120ms" href="https://github.com/Alex-Santora/Baseball-Pitch-Classification-Model" target="_blank" rel="noopener">
-            <p class="stack">Python · ML · Data Cleaning</p>
-            <h3>ML Pitch Classification Model</h3>
-            <p>A pitch-type classifier trained on 350,000+ real pitch records — feature engineering, cleaning, and evaluation end to end.</p>
-            <span class="view">View on GitHub <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="project-card reveal" href="project-four.html">
-            <p class="stack">Arduino/C++ · Embedded · Circuits</p>
-            <h3>Plant Watering System</h3>
-            <p>An automated system that reads soil moisture and drives a pump on a calibrated threshold so a plant waters itself.</p>
-            <span class="view">Case study <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="project-card reveal" style="--d:60ms" href="https://alex-santora.github.io/Chess-Engine/" target="_blank" rel="noopener">
-            <p class="stack">Python · Game Trees · Front-End</p>
-            <h3>Chess Engine</h3>
-            <p>A browser chess engine built on minimax search, alpha-beta pruning, and a hand-tuned board evaluation.</p>
-            <span class="view">Play it <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
-          <a class="project-card reveal" style="--d:120ms" href="https://alex-santora.github.io/Neural-Network-GTO/" target="_blank" rel="noopener">
-            <p class="stack">PyTorch · Neural Network · Python</p>
-            <h3>Neural Network Poker Agent</h3>
-            <p>A heads-up Texas Hold'em agent trained with reinforcement learning over 2,000,000+ simulated hands, playable in the browser.</p>
-            <span class="view">Play it <span class="arrow" aria-hidden="true">↗</span></span>
-          </a>
+          <article class="project-card reveal"><a href="project-one.html"><span class="project-icon">01</span><h3>Autonomous Navigation Robot</h3><p><strong>Arduino/C++ &bull; Hardware &bull; MQTT</strong></p><p>Designed and programmed an embedded robot system that uses sensor data and camera feedback to navigate an arena and avoid obstacles.</p><span class="more-link">View More</span></a></article>
+          <article class="project-card reveal"><a href="project-two.html"><span class="project-icon">02</span><h3>UNH Speech Privacy Research</h3><p><strong>Machine Learning &bull; Raspberry Pi &bull; Audio Processing</strong></p><p>Research project focused on deploying an audio anonymization pipeline that helps protect private speaker information.</p><span class="more-link">View More</span></a></article>
+          <article class="project-card reveal"><a href="https://github.com/Alex-Santora/Baseball-Pitch-Classification-Model" target="_blank" rel="noopener"><span class="project-icon">03</span><h3>ML Pitch Classification Model</h3><p><strong>Python &bull; Machine Learning &bull; Data Cleaning</strong></p><p>Developed a machine-learning pitch classification model trained on 350,000+ real pitch records.</p><span class="more-link">View More</span></a></article>
+          <article class="project-card reveal"><a href="https://futurewithai.dev" target="_blank" rel="noopener"><span class="project-icon">04</span><h3>FutureWithAI.dev</h3><p><strong>Web Development &bull; AI Education &bull; Product Build</strong></p><p>Built an AI-focused website designed to make learning and exploring practical AI tools more approachable and useful.</p><span class="more-link">View More</span></a></article>
+          <article class="project-card reveal"><a href="https://alex-santora.github.io/Chess-Engine/" target="_blank" rel="noopener"><span class="project-icon">05</span><h3>Chess Engine</h3><p><strong>Front-End &bull; Game Trees &bull; Python</strong></p><p>Built a browser chess engine using minimax search, alpha-beta pruning, and board evaluation.</p><span class="more-link">View More</span></a></article>
+          <article class="project-card reveal"><a href="https://alex-santora.github.io/Neural-Network-GTO/" target="_blank" rel="noopener"><span class="project-icon">06</span><h3>Neural Network Poker Agent</h3><p><strong>PyTorch &bull; Neural Networl &bull; Python</strong></p><p>Built a browser-based heads-up Texas Hold’em game with a neural network AI trained through reinforcement learning on over 2 million simulated hands.</p><span class="more-link">View More</span></a></article>
         </div>
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-    <section class="section section-sunk" id="contact">
+    <section class="section contact-section" id="contact-section">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Let's talk opportunities.</h2>
-          <p class="lead">Open to internships, research, and technical projects. The fastest way to reach me is email.</p>
+        <div class="section-heading reveal">
+          <p class="eyebrow">Contact Me</p>
+          <h2>Let's connect about opportunities and projects.</h2>
         </div>
-        <div class="contact-grid">
-          <a class="contact-card reveal" href="mailto:asantora1@stevens.edu">
-            <span class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            </span>
-            <span><span class="label">Email</span><br><span class="value">asantora1@stevens.edu</span></span>
-          </a>
-          <a class="contact-card reveal" style="--d:60ms" href="https://www.linkedin.com/in/alex-santora" target="_blank" rel="noopener">
-            <span class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.51 2.5 2.5 0 0 1 4.98 3.5ZM.5 8h4V24h-4V8Zm7 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.37-3.9-2.38 0-2.74 1.85-2.74 3.77V24h-4V8Z"/></svg>
-            </span>
-            <span><span class="label">LinkedIn</span><br><span class="value">in/alex-santora</span></span>
-          </a>
-          <a class="contact-card reveal" style="--d:120ms" href="https://github.com/Alex-Santora" target="_blank" rel="noopener">
-            <span class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
-            </span>
-            <span><span class="label">GitHub</span><br><span class="value">Alex-Santora</span></span>
-          </a>
+        <div class="contact-info">
+          <article class="contact-card reveal"><a class="contact-card-link" href="mailto:asantora1@stevens.edu"><span class="contact-icon">&#9993;</span><h3>Email</h3></a></article>
+          <article class="contact-card reveal"><a class="contact-card-link" href="https://www.linkedin.com/in/alex-santora" target="_blank" rel="noopener"><span class="contact-icon">in</span><h3>LinkedIn</h3></a></article>
+          <article class="contact-card reveal"><a class="contact-card-link" href="https://github.com/Alex-Santora" target="_blank" rel="noopener"><span class="contact-icon">git</span><h3>GitHub</h3></a></article>
+
         </div>
-        <a class="btn primary reveal" href="media/6-17-2026.pdf" target="_blank" rel="noopener">Download resume <span class="arrow" aria-hidden="true">→</span></a>
+        <div class="contact-actions reveal">
+          <a class="btn primary" href="media/7-20-2026.pdf" target="_blank" rel="noopener">View Resume</a>
+        </div>
+    
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-col">
-          <h2>Alex Santora</h2>
-          <p>Computer Engineering and Applied Mathematics student-athlete building systems that learn, classify, and decide.</p>
-        </div>
-        <div class="footer-col">
-          <p class="foot-mono">Navigate</p>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#resume">Resume</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <p class="foot-mono">Elsewhere</p>
-          <a href="mailto:asantora1@stevens.edu">Email</a>
+    <div class="container footer-columns">
+      <section>
+        <h2>About</h2>
+        <p>Computer Engineering and Applied Mathematics student interested in AI, data, hardware, software, and practical problem solving.</p>
+        <div class="footer-links">
           <a href="https://www.linkedin.com/in/alex-santora" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Alex-Santora" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:asantora1@stevens.edu">Email</a>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Alex Santora</span>
-        <span>Stevens Institute of Technology</span>
-      </div>
+      </section>
+      <section>
+        <h2>Links</h2>
+        <a href="#home-section">Home</a>
+        <a href="#about-section">About</a>
+        <a href="#resume-section">Resume</a>
+        <a href="#project-section">Projects</a>
+        <a href="#contact-section">Contact</a>
+      </section>
+      <section>
+        <h2>Have a Question?</h2>
+        <p><a href="mailto:asantora1@stevens.edu">Email</a></p>
+        <p><a href="https://www.linkedin.com/in/alex-santora" target="_blank" rel="noopener">LinkedIn</a></p>
+        <p><a>+1 617-285-6219</a></p>
+      </section>
     </div>
+    <p class="copyright">&copy; 2026 Alex Santora.</p>
   </footer>
 
   <script src="script.js"></script>
